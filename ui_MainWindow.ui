@@ -240,41 +240,68 @@
        </item>
       </layout>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit">
+     <widget class="QWidget" name="verticalLayoutWidget_2">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>80</y>
+        <y>40</y>
         <width>571</width>
-        <height>471</height>
+        <height>531</height>
        </rect>
       </property>
-     </widget>
-     <widget class="QComboBox" name="comboBox_keyword">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>40</y>
-        <width>131</width>
-        <height>23</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_keyword">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>40</y>
-        <width>50</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Keyword</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="3">
+          <widget class="QPushButton" name="btn_output_txt">
+           <property name="text">
+            <string>TXT Output</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_keyword">
+           <property name="text">
+            <string>Keyword</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QPushButton" name="btn_output_excel">
+           <property name="text">
+            <string>Excel Output</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_keyword"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="plainTextEdit">
+         <property name="lineWrapMode">
+          <enum>QPlainTextEdit::NoWrap</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
@@ -289,7 +316,6 @@
   <tabstop>input_data_file</tabstop>
   <tabstop>btn_dataDealing</tabstop>
   <tabstop>comboBox_keyword</tabstop>
-  <tabstop>plainTextEdit</tabstop>
   <tabstop>btn_run</tabstop>
   <tabstop>tabWidget</tabstop>
  </tabstops>

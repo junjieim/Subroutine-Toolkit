@@ -1,10 +1,9 @@
 from ui_MainWindow import Ui_MainWindow
 import sys
-import subprocess
 import os
 
 from PyQt5.QtWidgets import QMainWindow, QFileDialog
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtWidgets
 
 
 class Window(QMainWindow, Ui_MainWindow):
@@ -14,7 +13,7 @@ class Window(QMainWindow, Ui_MainWindow):
 
         self.data = {}
 
-        self.input_working_dir.setText(os.path.abspath(sys.path[0]))
+        self.input_working_dir.setText(os.path.abspath(os.path.dirname(sys.executable)))
 
     def slot_runScrit(self):
         os.chdir(self.input_working_dir.text())
@@ -55,7 +54,7 @@ class Window(QMainWindow, Ui_MainWindow):
             with open(self.input_data_file.text(), 'r') as datafile:
                 lines = datafile.readlines()
                 for index, line in enumerate(lines):
-                    if line.startswith(self.input_identifier.text()):
+                    if line.startswith(' ' + self.input_identifier.text()):
                         key = line.strip().split()[1]
                         if key not in self.data:
                             self.data[key] = [lines[index+1].strip()]
