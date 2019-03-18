@@ -19,14 +19,11 @@ class Window(QMainWindow, Ui_MainWindow):
     def slot_runScrit(self):
         os.chdir(self.input_working_dir.text())
         # delete the old data
-        tmplist = []
         files = [f for f in os.listdir(self.input_working_dir.text()) if not os.path.isdir(f)]
         for file in files:
             if (file.split('.')[0] == self.input_inp.text().split('.')[0]
                     and file.split('.')[1] != 'inp'):
-                tmplist.append(file)
-                # os.remove(file)
-        print(tmplist)
+                os.remove(file)
 
         # run abaqus script
         cmd_line = "abaqus job={job} user={forName} int".format(job=self.input_inp.text().split('.')[0],
@@ -58,7 +55,7 @@ class Window(QMainWindow, Ui_MainWindow):
             with open(self.input_data_file.text(), 'r') as datafile:
                 lines = datafile.readlines()
                 for index, line in enumerate(lines):
-                    if line.startswith('$'):
+                    if line.startswith(self.input_identifier.text()):
                         key = line.strip().split()[1]
                         if key not in self.data:
                             self.data[key] = [lines[index+1].strip()]
