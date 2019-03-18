@@ -107,7 +107,7 @@ class Ui_MainWindow(object):
         self.btn_dataDealing.setObjectName("btn_dataDealing")
         self.horizontalLayout.addWidget(self.btn_dataDealing)
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.tab_2)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 40, 571, 511))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 40, 571, 531))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
