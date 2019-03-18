@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>微软雅黑</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Subroutine Toolkit</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.png</normaloff>icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>601</width>
+      <height>601</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Run Cmd</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>571</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="2" column="2">
+          <widget class="QPushButton" name="btn_for_select">
+           <property name="text">
+            <string>SELECT</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="input_for">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="btn_inp_select">
+           <property name="text">
+            <string>SELECT</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_for">
+           <property name="text">
+            <string>.for Name</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_inp">
+           <property name="text">
+            <string>.inp Name</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="input_inp"/>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_workingdirection">
+           <property name="text">
+            <string>Working Direction</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="input_working_dir"/>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="btn_work_select">
+           <property name="text">
+            <string>SELECT</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_run">
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>RUN</string>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>16</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="autoRepeat">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Data Dealing</string>
+     </attribute>
+     <widget class="QWidget" name="horizontalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>571</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_dataSuffix">
+         <property name="text">
+          <string>data file</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="input_dataSuffix">
+         <property name="text">
+          <string>.dat</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_dataDealing">
+         <property name="text">
+          <string>DATA DEALING</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>571</width>
+        <height>471</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_keyword">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>40</y>
+        <width>131</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_keyword">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>50</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>keyword</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>input_inp</tabstop>
+  <tabstop>input_for</tabstop>
+  <tabstop>btn_inp_select</tabstop>
+  <tabstop>btn_for_select</tabstop>
+  <tabstop>input_dataSuffix</tabstop>
+  <tabstop>btn_dataDealing</tabstop>
+  <tabstop>comboBox_keyword</tabstop>
+  <tabstop>plainTextEdit</tabstop>
+  <tabstop>btn_run</tabstop>
+  <tabstop>tabWidget</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btn_run</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot_runScrit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>534</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>623</x>
+     <y>100</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_inp_select</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot_setInpName()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>580</x>
+     <y>83</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>633</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_for_select</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot_setForName()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>580</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>659</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_dataDealing</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot_dataDealing()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>622</x>
+     <y>40</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_keyword</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot_update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-12</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_work_select</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot_setWorkingDir()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>558</x>
+     <y>44</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>680</x>
+     <y>26</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>slot_runScrit()</slot>
+  <slot>slot_dataDealing()</slot>
+  <slot>slot_update()</slot>
+  <slot>slot_setWorkingDir()</slot>
+  <slot>slot_setInpName()</slot>
+  <slot>slot_setForName()</slot>
+ </slots>
+</ui>
