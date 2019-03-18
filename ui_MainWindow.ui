@@ -57,7 +57,7 @@
         <x>10</x>
         <y>0</y>
         <width>571</width>
-        <height>121</height>
+        <height>122</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -182,9 +182,9 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="input_dataSuffix">
+        <widget class="QLineEdit" name="input_data_file">
          <property name="text">
-          <string>.dat</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -243,7 +243,7 @@
   <tabstop>input_for</tabstop>
   <tabstop>btn_inp_select</tabstop>
   <tabstop>btn_for_select</tabstop>
-  <tabstop>input_dataSuffix</tabstop>
+  <tabstop>input_data_file</tabstop>
   <tabstop>btn_dataDealing</tabstop>
   <tabstop>comboBox_keyword</tabstop>
   <tabstop>plainTextEdit</tabstop>
@@ -307,8 +307,8 @@
    <slot>slot_dataDealing()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>581</x>
-     <y>53</y>
+     <x>111</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>622</x>
@@ -348,6 +348,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>input_inp</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot_input_inp_changed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>304</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>626</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>slot_runScrit()</slot>
@@ -356,5 +372,6 @@
   <slot>slot_setWorkingDir()</slot>
   <slot>slot_setInpName()</slot>
   <slot>slot_setForName()</slot>
+  <slot>slot_input_inp_changed()</slot>
  </slots>
 </ui>

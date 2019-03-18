@@ -12,57 +12,76 @@ class Window(QMainWindow, Ui_MainWindow):
         super(Window, self).__init__()
         self.setupUi(self)
 
-        self.working_dir = sys.path[0]
-        self.inp_name = ''
-        self.for_name = ''
+        self.data = {}
 
-        self.input_working_dir.setText(self.working_dir)
+        self.input_working_dir.setText(os.path.abspath(sys.path[0]))
 
     def slot_runScrit(self):
+        os.chdir(self.input_working_dir.text())
         # delete the old data
         tmplist = []
-        files = [f for f in os.listdir(self.working_dir) if not os.path.isdir(f)]
+        files = [f for f in os.listdir(self.input_working_dir.text()) if not os.path.isdir(f)]
         for file in files:
-            if ((not file == self.input_inp.text())
-                    and file.split('.')[0] == self.input_inp.text().split('.')[0]):
+            if (file.split('.')[0] == self.input_inp.text().split('.')[0]
+                    and file.split('.')[1] != 'inp'):
                 tmplist.append(file)
                 # os.remove(file)
         print(tmplist)
 
         # run abaqus script
         cmd_line = "abaqus job={job} user={forName} int".format(job=self.input_inp.text().split('.')[0],
-                                                                    forName=self.input_for.text())
-        # subprocess.call(cmd_line)
-        print(cmd_line)
+                                                                forName=self.input_for.text())
+        os.system(cmd_line)
 
     def slot_setWorkingDir(self):
-        self.working_dir = QFileDialog.getExistingDirectory(self,
-                                                            "Select the working direction:",
-                                                            sys.path[0])
-        self.input_working_dir.setText(self.working_dir)
+        working_dir = os.path.abspath(QFileDialog.getExistingDirectory(self,
+                                                                       "Select the working direction:",
+                                                                       self.input_working_dir.text()))
+        self.input_working_dir.setText(working_dir)
         pass
 
     def slot_setInpName(self):
-        self.inp_name = self.getFileName(".inp")
-        self.input_inp.setText(os.path.basename(self.inp_name))
+        inp_name = self.getFileName(".inp")
+        self.input_inp.setText(os.path.basename(inp_name))
 
     def slot_setForName(self):
-        self.for_name = self.getFileName(".for")
-        self.input_for.setText(os.path.basename((self.for_name)))
+        for_name = self.getFileName(".for")
+        self.input_for.setText(os.path.basename(for_name))
+
+    def slot_input_inp_changed(self):
+        self.input_data_file.setText(self.input_inp.text().split('.')[0] + '.dat')
 
     def slot_dataDealing(self):
-        pass
+        os.chdir(self.input_working_dir.text())
+        self.data = {}
+        if os.path.exists(self.input_data_file.text()):
+            with open(self.input_data_file.text(), 'r') as datafile:
+                lines = datafile.readlines()
+                for index, line in enumerate(lines):
+                    if line.startswith('$'):
+                        key = line.strip().split()[1]
+                        if key not in self.data:
+                            self.data[key] = [lines[index+1].strip()]
+                        else:
+                            self.data[key].append(lines[index+1].strip())
+            self.comboBox_keyword.addItems(list(self.data.keys()))
+        else:
+            QtWidgets.QMessageBox.warning(self, "Warning!", "Data file does not exist.",
+                                          QtWidgets.QMessageBox.Cancel)
 
     def slot_update(self):
-        pass
+        self.plainTextEdit.clear()
+        keyword = self.comboBox_keyword.currentText()
+        for text in self.data[keyword]:
+            self.plainTextEdit.appendPlainText(text)
 
     def getFileName(self, str):
         title = "Select the {str} file:".format(str=str)
-        filetype = "{str1} File (*{str2})".format(str1=str, str2=str)
-        filename, ret = QFileDialog.getOpenFileName(self,
+        ftype = "{str1} File (*{str2})".format(str1=str, str2=str)
+        filename, filetype = QFileDialog.getOpenFileName(self,
                                                          title,
                                                          self.input_working_dir.text(),
-                                                         filetype)
+                                                         ftype)
         return filename
 
 
