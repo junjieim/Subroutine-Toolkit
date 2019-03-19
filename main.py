@@ -19,13 +19,10 @@ class Window(QMainWindow, Ui_MainWindow):
         os.chdir(self.input_working_dir.text())
         # delete the old data
         files = [f for f in os.listdir(self.input_working_dir.text()) if not os.path.isdir(f)]
-        l = []
         for file in files:
             if (file.split('.')[0] == self.input_inp.text().split('.')[0]
                     and file.split('.')[1] != 'inp' and file.split('.')[1] != 'for'):
-                l.append(file)
                 os.remove(file)
-        print(l)
 
         # run abaqus script
         cmd_line = "abaqus job={job} user={forName} int".format(job=self.input_inp.text().split('.')[0],
@@ -53,6 +50,8 @@ class Window(QMainWindow, Ui_MainWindow):
     def slot_dataDealing(self):
         os.chdir(self.input_working_dir.text())
         self.data = {}
+        self.comboBox_keyword.clear()
+        self.plainTextEdit.clear()
         if os.path.exists(self.input_data_file.text()):
             with open(self.input_data_file.text(), 'r') as datafile:
                 lines = datafile.readlines()
@@ -71,8 +70,9 @@ class Window(QMainWindow, Ui_MainWindow):
     def slot_update(self):
         self.plainTextEdit.clear()
         keyword = self.comboBox_keyword.currentText()
-        for text in self.data[keyword]:
-            self.plainTextEdit.appendPlainText(text)
+        if keyword:
+            for text in self.data[keyword]:
+                self.plainTextEdit.appendPlainText(text)
 
     def getFileName(self, str):
         title = "Select the {str} file:".format(str=str)
