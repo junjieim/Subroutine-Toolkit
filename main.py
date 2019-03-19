@@ -19,10 +19,13 @@ class Window(QMainWindow, Ui_MainWindow):
         os.chdir(self.input_working_dir.text())
         # delete the old data
         files = [f for f in os.listdir(self.input_working_dir.text()) if not os.path.isdir(f)]
+        l = []
         for file in files:
             if (file.split('.')[0] == self.input_inp.text().split('.')[0]
-                    and file.split('.')[1] != 'inp'):
+                    and file.split('.')[1] != 'inp' and file.split('.')[1] != 'for'):
+                l.append(file)
                 os.remove(file)
+        print(l)
 
         # run abaqus script
         cmd_line = "abaqus job={job} user={forName} int".format(job=self.input_inp.text().split('.')[0],
