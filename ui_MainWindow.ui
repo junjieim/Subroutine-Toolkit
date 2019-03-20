@@ -283,9 +283,9 @@
           </widget>
          </item>
          <item row="0" column="4">
-          <widget class="QPushButton" name="btn_output_excel">
+          <widget class="QPushButton" name="btn_output_csv">
            <property name="text">
-            <string>Excel Output</string>
+            <string>CSV Output (All Data)</string>
            </property>
           </widget>
          </item>
@@ -376,8 +376,8 @@
    <slot>slot_dataDealing()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>55</y>
+     <x>581</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>622</x>
@@ -433,6 +433,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btn_output_txt</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot_txt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>442</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>656</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_output_csv</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slot_csv()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>523</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>814</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>slot_runScrit()</slot>
@@ -442,5 +474,7 @@
   <slot>slot_setInpName()</slot>
   <slot>slot_setForName()</slot>
   <slot>slot_input_inp_changed()</slot>
+  <slot>slot_txt()</slot>
+  <slot>slot_csv()</slot>
  </slots>
 </ui>

@@ -5,6 +5,7 @@ import os
 from PyQt5.QtWidgets import QMainWindow, QFileDialog
 from PyQt5 import QtWidgets
 
+from Save import *
 
 class Window(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -82,6 +83,14 @@ class Window(QMainWindow, Ui_MainWindow):
                                                          self.input_working_dir.text(),
                                                          ftype)
         return filename
+
+    def slot_txt(self):
+        saveTXT(self.comboBox_keyword.currentText(), self.plainTextEdit.toPlainText())
+        QtWidgets.QMessageBox.information(self, 'Info', 'Complete.', buttons=QtWidgets.QMessageBox.Ok)
+
+    def slot_csv(self):
+        saveCSV(self.comboBox_keyword.currentText(), self.data)
+        QtWidgets.QMessageBox.information(self, 'Info', 'Complete.', buttons=QtWidgets.QMessageBox.Ok)
 
 
 if __name__ == '__main__':
