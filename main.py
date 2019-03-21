@@ -12,12 +12,24 @@ class Window(QMainWindow, Ui_MainWindow):
         super(Window, self).__init__()
         self.setupUi(self)
 
+        # data
+        # {
+        #   key1: ['line1', 'line2', 'line3', ...,]
+        #   key2: ['line1', 'line2', 'line3', ...,]
+        #   ...
+        #   keyn: ['line1', 'line2', 'line3', ...,]
+        # }
+        # 其中 line can be 'value' or 'value1 value2 ... valuen'
+        # 没有想到更有效率的结构
         self.data = {}
 
+        # Initialize the input_working_dir as the direction where program startup
         self.input_working_dir.setText(os.path.abspath(os.path.dirname(sys.executable)))
 
     def slot_runScrit(self):
+        # change direction to input_working_dir
         os.chdir(self.input_working_dir.text())
+
         # delete the old data
         files = [f for f in os.listdir(self.input_working_dir.text()) if not os.path.isdir(f)]
         for file in files:
@@ -31,18 +43,22 @@ class Window(QMainWindow, Ui_MainWindow):
         os.system(cmd_line)
 
     def slot_setWorkingDir(self):
+        # select the working direction
         working_dir = os.path.abspath(QFileDialog.getExistingDirectory(self,
                                                                        "Select the working direction:",
                                                                        self.input_working_dir.text()))
+        # update display
         self.input_working_dir.setText(working_dir)
         pass
 
     def slot_setInpName(self):
         inp_name = self.getFileName(".inp")
+        # update display
         self.input_inp.setText(os.path.basename(inp_name))
 
     def slot_setForName(self):
         for_name = self.getFileName(".for")
+        # update display
         self.input_for.setText(os.path.basename(for_name))
 
     def slot_input_inp_changed(self):
@@ -50,15 +66,19 @@ class Window(QMainWindow, Ui_MainWindow):
 
     def slot_dataDealing(self):
         os.chdir(self.input_working_dir.text())
+        # clear data before dataDealing
         self.data = {}
         self.comboBox_keyword.clear()
         self.plainTextEdit.clear()
+
         if os.path.exists(self.input_data_file.text()):
             with open(self.input_data_file.text(), 'r') as datafile:
                 lines = datafile.readlines()
                 for index, line in enumerate(lines):
+                    # when line starts with the input_identifier, get the data
                     if line.startswith(' ' + self.input_identifier.text()):
                         key = line.strip().split()[1]
+                        # then key is not in the data, new data[key], or append data[key]
                         if key not in self.data:
                             self.data[key] = [lines[index+1].strip()]
                         else:
