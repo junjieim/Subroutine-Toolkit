@@ -89,7 +89,7 @@ class Window(QMainWindow, Ui_MainWindow):
         QtWidgets.QMessageBox.information(self, 'Info', 'Complete.', buttons=QtWidgets.QMessageBox.Ok)
 
     def slot_csv(self):
-        saveCSV(self.comboBox_keyword.currentText(), self.data)
+        saveCSV(self.data)
         QtWidgets.QMessageBox.information(self, 'Info', 'Complete.', buttons=QtWidgets.QMessageBox.Ok)
 
 
